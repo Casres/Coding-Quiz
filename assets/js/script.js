@@ -24,6 +24,8 @@ var questionAnswerAreaEl = document.createElement("ul");
 // this creates a list element (for all the asnwer items in a list)
 var questionAnswerItemEl = document.createElement("li");
 
+var mainParentAttachmentEl = document.querySelector("#title");
+
 // this represents the quiz area
 var quizArea = document.querySelector("#quiz");
 
@@ -44,14 +46,29 @@ var initiate = startBtnInitiate.addEventListener("click", function() {
 // the rules function
 var rulesOfTheQuiz = function() {
     console.log("you have 5 min to complete this quiz you can retake after if you would like to.")
-    startQuiz();
+    
+    // this removes the 'click anywhere to start' 
+    var initialTask = document.querySelector("#initial-instrcution").remove("#initial-instrcution");
 
-    // display rules where quiz'll go
+    // shows the rules
+    var rules = document.createElement("div");
+    rules.className = 'rules';
+    rules.innerHTML = "<h3 class='rules'> The rules are that you cannot google any of these asnwers, this is a recall-from-your-memory excersize. You will have 3 minutes to answer 5 multiple choice questions. If the timer runs out, you can retake the quiz again if you would like to. </h3>";
+    mainParentAttachmentEl.appendChild(rules);
+
+    // var btnCont = startBtnInitiate.addEventListener("click", function() {
+
+    //     startQuiz();
+    // });
+    
 }
 
 // the startQuiz function
-var startQuiz = function(_event) {
+var startQuiz = function() {
     console.log("I hear the click, as well!!");
+
+    
+    alert("Allow!!");
 
     // start / show timmer running
 
