@@ -32,7 +32,7 @@ h1, #initial-instruction {
     justify-content: center;
 }
 
-/* #initial-instruction { */
+#initial-instruction {
     color: rgb(156, 156, 156);
 }
 
@@ -40,7 +40,7 @@ h1, #initial-instruction {
 cursor: pointer;
 }
 
-/* .contBtnRules { */
+.contBtnRules {
     border-radius: 3rem;
     background: #5b6c7e;
     border: #5b6c7e;
@@ -51,19 +51,15 @@ cursor: pointer;
 }
 
 h5 {
-    font-size: small;
+    font-size: larger;
     color:#b8b8b8;
-    box-sizing: inherit;
-    appearance: none;
-    -webkit-appearance: none;
-    -moz-appearance: none;
-    outline: none;
-    border: 0;
-    
+    padding: 0.45rem;
 }
 
 /* styling of title of quiz */
 #title {
+    display: flex;
+    flex-direction: column;
     font-size: x-large;
     font-style: italic;
 }
@@ -74,6 +70,7 @@ h5 {
     align-items: center;
     font-size: larger;
     margin: 2rem;
+    margin-top: 1rem;
 }
 
 
