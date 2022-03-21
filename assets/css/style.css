@@ -36,6 +36,25 @@ h4 {
     color: rgb(156, 156, 156);
 }
 
+.contBtnRules {
+    background-color: #5b6c7e;
+    border-color: #5b6c7e;
+    box-shadow: none;
+    border-radius: 1rem;
+}
+
+h5 {
+    font-size: small;
+    color:#b8b8b8;
+    box-sizing: inherit;
+    appearance: none;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    outline: none;
+    border: 0;
+    
+}
+
 /* styling of title of quiz */
 #title {
     font-size: x-large;
@@ -44,7 +63,8 @@ h4 {
 
 .rules {
     display: flex;
-    justify-content: center;
+    flex-direction: column;
+    align-items: center;
     font-size: larger;
     margin: 2rem;
 }

@@ -48,27 +48,43 @@ var rulesOfTheQuiz = function() {
     console.log("you have 5 min to complete this quiz you can retake after if you would like to.")
     
     // this removes the 'click anywhere to start' 
-    var initialTask = document.querySelector("#initial-instrcution").remove("#initial-instrcution");
-
+    var initialTask = document.querySelector("#initial-instruction").remove("#initial-instruction");
+    
     // shows the rules
     var rules = document.createElement("div");
     rules.className = 'rules';
     rules.innerHTML = "<h3 class='rules'> The rules are that you cannot google any of these asnwers, this is a recall-from-your-memory excersize. You will have 3 minutes to answer 5 multiple choice questions. If the timer runs out, you can retake the quiz again if you would like to. </h3>";
     mainParentAttachmentEl.appendChild(rules);
 
-    // var btnCont = startBtnInitiate.addEventListener("click", function() {
-
-    //     startQuiz();
-    // });
+    var rulesBtn = document.createElement("button");
+    rulesBtn.className = 'contBtnRules';
+    rulesBtn.innerHTML = "<h5>click here if you have read the rules and are ready to go</h5>";
+    rules.appendChild(rulesBtn);
     
-}
+    var btnCont = rulesBtn.addEventListener("click", function() {
+
+        alert("onto the game");
+
+        startQuiz();
+    });
+    
+};
 
 // the startQuiz function
 var startQuiz = function() {
     console.log("I hear the click, as well!!");
 
+    // the question
+    var quizQuestionEl = document.createElement("h3");
+    quizQuestionEl.innerHTML = questions.question;
+
+    var awrContainerEl = document.createElement("ul");
     
-    alert("Allow!!");
+    var awrItemsEl = document.createElement("li");
+    awrItemsEl.innerHTML = questions.choices;
+
+    console.log(questions.question);
+    console.log(questions.choices);
 
     // start / show timmer running
 
