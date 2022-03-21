@@ -32,7 +32,7 @@ h1, #initial-instruction {
     justify-content: center;
 }
 
-#initial-instruction {
+/* #initial-instruction { */
     color: rgb(156, 156, 156);
 }
 
@@ -40,7 +40,7 @@ h1, #initial-instruction {
 cursor: pointer;
 }
 
-.contBtnRules {
+/* .contBtnRules { */
     border-radius: 3rem;
     background: #5b6c7e;
     border: #5b6c7e;
