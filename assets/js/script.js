@@ -2,68 +2,63 @@
 
 
 
+// <-- questions array -->
+var questions = [
+    {
+        question: "what is 1 + 1?" , 
+        choices: [1,2,3,] ,
+        correctAsnwer: 2 
+    } 
+];
 
-
+// ---------------------------------------------------------// ---------------------------------------------------------
 
 // <-- make variables that are js versions of html elements -->
 
+// this makes the h2 element (for the question)
 var questionStatementEl = document.createElement("h2");
+
+// this created the ul element (for all the answers to be in a list)
 var questionAnswerAreaEl = document.createElement("ul");
-var questionAnswerItemEl = document.creatElement("li");
 
-// this is listening for a click, when it does it starts the quiz
-var startBtnInitiate = document.addEventListener("click",startQuiz);
+// this creates a list element (for all the asnwer items in a list)
+var questionAnswerItemEl = document.createElement("li");
 
-
-
-// the area where the quiz goes
+// this represents the quiz area
 var quizArea = document.querySelector("#quiz");
 
 
 
 
-// <-- make your question array -->
-var questions = [
 
-    {
-        question: "what is 1 + 1?" , 
-        choices: [1,2,3,] ,
-        correctAsnwer: 2 
-    },
 
-    {
-        question: "what is 2 + 2?" , 
-        choices: [4,2,3,] ,
-        correctAsnwer: 4
-    }, 
+// this is listening for a click in the html document, when it does it starts the quiz
+var startBtnInitiate = document.querySelector("html");
+// ---------------------------------------------------------// ---------------------------------------------------------
 
-    {
-        question: "what is 3 + 3?" , 
-        choices: [6,2,3,] ,
-        correctAsnwer: 6 
-    },
+var initiate = startBtnInitiate.addEventListener("click", function() {
+    console.log("I hear the click, Houston");
+    rulesOfTheQuiz();
+});
 
-    {
-        question: "what is 4 + 4?" , 
-        choices: [8,2,3,] ,
-        correctAsnwer: 8
-    } , 
+// the rules function
+var rulesOfTheQuiz = function() {
+    console.log("you have 5 min to complete this quiz you can retake after if you would like to.")
+    startQuiz();
 
-    {
-        question: "what is 5 + 5?" , 
-        choices: [10,2,3,] ,
-        correctAsnwer: 10 
-    }
-
-];
-
-// <-- make the functionality of when user picks the right question, they move to the next question -->
-
-// when you click on this button it executes the startQuiz function
-
+    // display rules where quiz'll go
+}
 
 // the startQuiz function
-var startQuiz = function() {
+var startQuiz = function(_event) {
+    console.log("I hear the click, as well!!");
+
+    // start / show timmer running
 
 }
 
+// <-- make the function of when user picks the right question, they move to the next question -->
+
+
+// when the quiz is done, here it'll loop back to the initial function 'initiate'
+// initiate();
