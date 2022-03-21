@@ -1,0 +1,88 @@
+
+
+html {
+    background-color: #5b6c7e;
+}
+
+/* the whole webpage */
+body {
+    font-family: Open Sans;
+    margin-top: 18rem;
+    /* I found rem in this lesson through research */
+}
+
+/* the title of the quiz */
+h1 {
+    text-align: center;
+}
+
+h4 {
+    display: flex;
+    justify-content: center;
+    color: rgb(156, 156, 156);
+}
+
+/* styling of title of quiz */
+#title {
+    font-size: x-large;
+    font-style: italic;
+}
+
+/* where the quiz takes place */
+#quiz {
+    background-color: coral;
+    text-indent: 10px;
+    display:none;
+}
+
+/* the button that you click to move to the next question */
+.button {
+    border:4px solid;
+    border-radius:5px;
+    width: 40px;
+    padding-left:5px;
+    padding-right: 5px;
+    position: relative;
+    float:right;
+    background-color: #DCDCDC;
+    color: black;
+    margin: 0 2px 0 2px;
+}
+
+/* .button.active {
+    background-color: #F8F8FF;
+    color: #525252;
+} */
+
+/* the button element */
+button {
+    position: relative;
+    float:right;
+}
+
+/* the text from the button to move to the next question */
+.button a {
+    text-decoration: none;
+    color: black;
+}
+
+/* where everything takes place */
+#container {
+    width:50%;
+    margin:auto;
+    padding: 0 25px 40px 10px;
+    background-color: #5b6c7e;
+    border:4px solid #B0E0E6;
+    border-radius:5px;
+    color: #FFFFFF;
+    font-weight: bold;
+    box-shadow: 5px 5px 5px #888;
+}
+
+/* the questions?? */
+ul {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+}
+
