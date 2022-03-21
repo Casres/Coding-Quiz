@@ -35,18 +35,19 @@ h4 {
     display:none;
 }
 
-/* the button that you click to move to the next question */
-.button {
-    border:4px solid;
-    border-radius:5px;
-    width: 40px;
-    padding-left:5px;
-    padding-right: 5px;
+/* the button element */
+.navEl {
     position: relative;
     float:right;
-    background-color: #DCDCDC;
-    color: black;
-    margin: 0 2px 0 2px;
+    background-color: #5b6c7e;
+}
+
+/* the button that you click to move to the next question */
+.navBtn {
+    display: flex;
+    justify-content: center;
+    background: #5b6c7e;
+    color: #888;
 }
 
 /* .button.active {
@@ -54,17 +55,7 @@ h4 {
     color: #525252;
 } */
 
-/* the button element */
-button {
-    position: relative;
-    float:right;
-}
-
 /* the text from the button to move to the next question */
-.button a {
-    text-decoration: none;
-    color: black;
-}
 
 /* where everything takes place */
 #container {
