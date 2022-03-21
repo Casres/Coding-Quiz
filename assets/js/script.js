@@ -35,7 +35,7 @@ var quizArea = document.querySelector("#quiz");
 
 
 // this is listening for a click in the html document, when it does it starts the quiz
-var startBtnInitiate = document.querySelector("html");
+var startBtnInitiate = document.querySelector("#initial-instruction");
 // ---------------------------------------------------------// ---------------------------------------------------------
 
 var initiate = startBtnInitiate.addEventListener("click", function() {
@@ -69,6 +69,11 @@ var rulesOfTheQuiz = function() {
     });
     
 };
+
+// coutndown function, when finished, it starts the quiz
+
+
+
 
 // the startQuiz function
 var startQuiz = function() {
