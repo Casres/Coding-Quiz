@@ -65,25 +65,31 @@ var rulesOfTheQuiz = function() {
 
         alert("onto the game");
 
-        countDownFunc();
+        var counter = 3 
+        
+        
+        var countDownFunc = function (countDown){
+            console.log(counter);
+            counter--;
+            if (counter === 0) {
+                console.log("lets begin");
+                // alert("lets begin");
+                clearInterval(countDown);
+            };
+        };
+        
+        var countDownFunc = setInterval(countDownFunc, 1000);
+
     });
     
 };
 
 // coutndown function, when finished, it starts the quiz
-var counter = 3 
-var countDownFunc = function (){
-    console.log(counter);
-    counter--;
-    if (counter == 0) {
-        console.log("lets begin");
-        alert("lets begin");
-        clearInterval(countDown);
-    };
-    var countDown = setInterval(countDownFunc, 1000);
-    // clearInterval(countDown);
-    
-};
+
+
+
+
+
 
 
 
