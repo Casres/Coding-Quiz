@@ -1,15 +1,22 @@
 // Christian, my man. You CAN do this dude. I know it. Trust me.
 
 
-
+var qIndex = 0
 // <-- questions array -->
 var questions = [
     {
         question: "what is 1 + 1?" , 
-        answers: [1,2,3,] ,
+        answers: [ ["Lorem ipsum dolor, Assumenda voluptatem natus sunt,  "],["I eat tacos, and I love it.  "],["ad delectus tempora laudantium expedita dolorem quo, dicta quas accusantium harum ipsa ipsam"] ]  ,
         correctAnswer: 2 
+    } ,
+    {
+        question: "pick A, B or C?" , 
+        answers: [ ["A"],["B"],["C"] ]  ,
+        correctAnswer: "C" 
     } 
 ];
+
+
 
 // ---------------------------------------------------------// ---------------------------------------------------------
 
@@ -60,7 +67,7 @@ var rulesOfTheQuiz = function() {
 
         // alert("onto the game");
 
-        var counter = 3 
+        var counter = 1 
         
         
         var countDownFunc = function (countDown){
@@ -83,39 +90,60 @@ var rulesOfTheQuiz = function() {
 
 // the startQuiz function
 var startQuiz = function() {
-    
+
     // start / show timmer running
 
     // removes the instructions
     var instructionsRmv = document.querySelector(".rules").remove(".rules");
 
-    console.log("I hear the click, as well!!");
-
-    // the question
     var quizQuestionEl = document.createElement("div");
+    // the question
     quizQuestionEl.className = 'questionItem';
-    quizQuestionEl.innerHTML = "<h3> " + questions.question + " </h3>";
+    quizQuestionEl.innerHTML = "<h2 class='question'>" + questions[qIndex].question + "</h2>";
     mainParentAttachmentEl.appendChild(quizQuestionEl);
 
 
     // where the questions are held
     var awrContainerEl = document.createElement("ul");
     // the answers
-    var awrItemsEl = document.createElement("button");
-    awrItemsEl.className = 'answerItems';
-    awrItemsEl.innerHTML = questions.answers;
-    mainParentAttachmentEl.appendChild(awrItemsEl);
-
-
-
-    console.log(questions.question);
-    console.log(questions.answers);
-
-
+    questions[qIndex].answers.forEach(ans => {
+        var awrItemsEl = document.createElement("div");
+        awrItemsEl.className = 'answerItems';
+        awrItemsEl.innerHTML = `<h4 class='answerChoices'>${ans}</h4>`;
+        mainParentAttachmentEl.appendChild(awrItemsEl);
+    })
 }
+
+
+
+// var awrInput = document.addEventListener("click", ".answerItems", handleClick);
+
+var handleClick = function () {
+
+    if(qIndex<questions.length-1){
+        qIndex++;
+    
+        startQuiz();
+    } else {
+        console.log('Show scoreboard');
+    }
+
+
+};
 
 // <-- make the function of when user picks the right question, they move to the next question -->
 
 
 // when the quiz is done, here it'll loop back to the initial function 'initiate'
 // initiate();
+
+
+
+
+
+
+
+// for(i=1; i<=questions[0].answers.length; i++) {
+//     create elements to display here 
+    
+//     }
