@@ -1,4 +1,3 @@
-// Christian, my man. You CAN do this dude. I know it. Trust me.
 
 
 var qIndex = 0
@@ -28,7 +27,7 @@ var questionStatementEl = document.createElement("h2");
 // this created the ul element (for all the answers to be in a list)
 var questionAnswerAreaEl = document.createElement("ul");
 
-// this creates a list element (for all the asnwer items in a list)
+// this creates a list element (for all the answer items in a list)
 var questionAnswerItemEl = document.createElement("li");
 
 var mainParentAttachmentEl = document.querySelector("#title");
@@ -55,7 +54,7 @@ var rulesOfTheQuiz = function() {
     // shows the rules
     var rules = document.createElement("div");
     rules.className = 'rules';
-    rules.innerHTML = "<h3 class='rules'> The rules are that you cannot google any of these asnwers, this is a recall-from-your-memory excersize. You will have 3 minutes to answer 5 multiple choice questions. If the timer runs out, you can retake the quiz again if you would like to. </h3>";
+    rules.innerHTML = "<h3 class='rules'> The rules are that you cannot google any of these answers, this is a recall-from-your-memory excursive. You will have 3 minutes to answer 5 multiple choice questions. If the timer runs out, you can retake the quiz again if you would like to. </h3>";
     mainParentAttachmentEl.appendChild(rules);
 
     var rulesBtn = document.createElement("button");
@@ -91,13 +90,13 @@ var rulesOfTheQuiz = function() {
 // the startQuiz function
 var startQuiz = function() {
 
-    // start / show timmer running
+    // start / show timer running
 
     // removes the instructions
     var instructionsRmv = document.querySelector(".rules").remove(".rules");
 
     var quizQuestionEl = document.createElement("div");
-    // the question
+    // the question 
     quizQuestionEl.className = 'questionItem';
     quizQuestionEl.innerHTML = "<h2 class='question'>" + questions[qIndex].question + "</h2>";
     mainParentAttachmentEl.appendChild(quizQuestionEl);
