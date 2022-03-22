@@ -6,8 +6,8 @@
 var questions = [
     {
         question: "what is 1 + 1?" , 
-        choices: [1,2,3,] ,
-        correctAsnwer: 2 
+        answers: [1,2,3,] ,
+        correctAnswer: 2 
     } 
 ];
 
@@ -28,11 +28,6 @@ var mainParentAttachmentEl = document.querySelector("#title");
 
 // this represents the quiz area
 var quizArea = document.querySelector("#quiz");
-
-
-
-
-
 
 // this is listening for a click in the html document, when it does it starts the quiz
 var startBtnInitiate = document.querySelector("#initial-instruction");
@@ -63,7 +58,7 @@ var rulesOfTheQuiz = function() {
     
     var btnCont = rulesBtn.addEventListener("click", function() {
 
-        alert("onto the game");
+        // alert("onto the game");
 
         var counter = 3 
         
@@ -71,10 +66,12 @@ var rulesOfTheQuiz = function() {
         var countDownFunc = function (countDown){
             console.log(counter);
             counter--;
-            if (counter === 0) {
+            if (counter === -1) {
                 console.log("lets begin");
                 // alert("lets begin");
-                clearInterval(countDown);
+                // clearInterval(countDown);
+                clearInterval(countDownFunc);
+                startQuiz();
             };
         };
         
@@ -84,32 +81,36 @@ var rulesOfTheQuiz = function() {
     
 };
 
-// coutndown function, when finished, it starts the quiz
-
-
-
-
-
-
-
-
 // the startQuiz function
 var startQuiz = function() {
+    
+    // start / show timmer running
+
+    // removes the instructions
+    var instructionsRmv = document.querySelector(".rules").remove(".rules");
+
     console.log("I hear the click, as well!!");
 
     // the question
-    var quizQuestionEl = document.createElement("h3");
-    quizQuestionEl.innerHTML = questions.question;
+    var quizQuestionEl = document.createElement("div");
+    quizQuestionEl.className = 'questionItem';
+    quizQuestionEl.innerHTML = "<h3> " + questions.question + " </h3>";
+    mainParentAttachmentEl.appendChild(quizQuestionEl);
 
+
+    // where the questions are held
     var awrContainerEl = document.createElement("ul");
-    
-    var awrItemsEl = document.createElement("li");
-    awrItemsEl.innerHTML = questions.choices;
+    // the answers
+    var awrItemsEl = document.createElement("button");
+    awrItemsEl.className = 'answerItems';
+    awrItemsEl.innerHTML = questions.answers;
+    mainParentAttachmentEl.appendChild(awrItemsEl);
+
+
 
     console.log(questions.question);
-    console.log(questions.choices);
+    console.log(questions.answers);
 
-    // start / show timmer running
 
 }
 

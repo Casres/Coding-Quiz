@@ -46,14 +46,24 @@ cursor: pointer;
     border: #5b6c7e;
 }
 
-.contBtnRules:hover {
+/* .contBtnRules,h5:hover {
     background-color: #B0E0E6;
-}
+    color: black;
+} */
 
 h5 {
     font-size: larger;
     color:#b8b8b8;
     padding: 0.45rem;
+}
+
+h5:hover {
+    padding: 1rem;
+    border-radius: 3rem;
+    background: #5b6c7e;
+    border: #5b6c7e;
+    background-color: #B0E0E6;
+    color: black;
 }
 
 /* styling of title of quiz */
@@ -73,8 +83,28 @@ h5 {
     margin-top: 1rem;
 }
 
+/* where the question is */
+.questionItem {
+    display: flex;
+    justify-content: center;
+}
 
+.answerItems {
+    font-size: large;
+    color: black;
+    width: 10rem;
+    height: 3rem;
+    border-radius: 1.25rem;
+    background: #5b6c7e;
+    border: #5b6c7e;
+    background-color: #B0E0E6;
+}
 
+.answerItems:hover {
+    transform: scale(1.13);
+    box-shadow: 8px 7px 16px 4px #888;
+    color: #7b7b7b;
+}
 /* the text from the button to move to the next question */
 
 
