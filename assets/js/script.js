@@ -6,12 +6,14 @@ var questions = [
     {
         question: "what is 1 + 1?" , 
         answers: [ ["Lorem ipsum dolor, Assumenda voluptatem natus sunt,  "],["I eat tacos, and I love it.  "],["ad delectus tempora laudantium expedita dolorem quo, dicta quas accusantium harum ipsa ipsam"] ]  ,
-        correctAnswer: 2 
+        correctAnswer: 2 ,
+        correctAnswerIndex: 1
     } ,
     {
         question: "pick A, B or C?" , 
-        answers: [ ["A"],["B"],["C"] ]  ,
-        correctAnswer: "C" 
+        answers: [ "A","B","C" ]  ,
+        correctAnswer: "C",
+        correctAnswerIndex: 2 
     } 
 ];
 
@@ -92,23 +94,45 @@ var startQuiz = function() {
     // removes the instructions
     var instructionsRmv = document.querySelector(".rules").remove(".rules");
 
-    // var quizQuestionEl = document.createElement("div");
+    showNextQuestion();
+}
+
+function showNextQuestion() {
+    // the question
+    var existingQuestionAnswerContainerEl = mainParentAttachmentEl.querySelector('#question-answer');
+    if (existingQuestionAnswerContainerEl != null) {
+        existingQuestionAnswerContainerEl.remove();
+    }
+
+    var questionAnswerContainerEl = document.createElement('div');
+    questionAnswerContainerEl.id = 'question-answer'
+    mainParentAttachmentEl.appendChild(questionAnswerContainerEl);
+
     var quizQuestionEl = document.createElement('h2');
     quizQuestionEl.className = 'questionItem';
     quizQuestionEl.textContent = questions[qIndex].question;
-    mainParentAttachmentEl.appendChild(quizQuestionEl);
+    questionAnswerContainerEl.appendChild(quizQuestionEl);
 
-
-
-    // where the questions are held
     var awrContainerEl = document.createElement("ul");
+    awrContainerEl.id = 'answer-container'
+    questionAnswerContainerEl.append(awrContainerEl);
+
+    for(var i = 0; i < questions[qIndex].answers.length; i++) {
+        console.log('running loop')
+        var possibleAnswerEl = document.createElement('li');
+        possibleAnswerEl.setAttribute('data-index', i);
+        possibleAnswerEl.textContent = questions[qIndex].answers[i];
+        possibleAnswerEl.addEventListener('click', handleClick);
+        awrContainerEl.appendChild(possibleAnswerEl);
+    }
+
     // the answers
-    questions[qIndex].answers.forEach(ans => {
-        var awrItemsEl = document.createElement(`<h4 class='answerChoices'>${ans}</h4>`);
-        awrItemsEl.className = 'answerItems';
-        // awrItemsEl.textContent = questions[qIndex].answers;
-        quizQuestionEl.appendChild(awrItemsEl);
-    })
+    // questions[qIndex].answers.forEach(ans => {
+    //     var awrItemsEl = document.createElement(`<h4 class='answerChoices'>${ans}</h4>`);
+    //     awrItemsEl.className = 'answerItems';
+    //     // awrItemsEl.textContent = questions[qIndex].answers;
+    //     quizQuestionEl.appendChild(awrItemsEl);
+    // })
 
 
 
@@ -127,12 +151,21 @@ var startQuiz = function() {
 
 // var awrInput = document.addEventListener("click", ".answerItems", handleClick);
 
-var handleClick = function () {
+var handleClick = function(event) {
+    console.log(event);
+    var target = event.target;
+    var index = target.dataset.index;
+
+    if (index == questions[qIndex].correctAnswerIndex) {
+        console.log('you got it right!')
+    } else {
+        console.log('false!')
+    }
 
     if(qIndex<questions.length-1){
         qIndex++;
     
-        startQuiz();
+        showNextQuestion();
     } else {
         console.log('Show scoreboard');
     }
