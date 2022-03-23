@@ -89,28 +89,38 @@ var rulesOfTheQuiz = function() {
 
 // the startQuiz function
 var startQuiz = function() {
-
-    // start / show timer running
-
     // removes the instructions
     var instructionsRmv = document.querySelector(".rules").remove(".rules");
 
-    var quizQuestionEl = document.createElement("div");
-    // the question 
+    // var quizQuestionEl = document.createElement("div");
+    var quizQuestionEl = document.createElement('h2');
     quizQuestionEl.className = 'questionItem';
-    quizQuestionEl.innerHTML = "<h2 class='question'>" + questions[qIndex].question + "</h2>";
+    quizQuestionEl.textContent = questions[qIndex].question;
     mainParentAttachmentEl.appendChild(quizQuestionEl);
+
 
 
     // where the questions are held
     var awrContainerEl = document.createElement("ul");
     // the answers
     questions[qIndex].answers.forEach(ans => {
-        var awrItemsEl = document.createElement("div");
+        var awrItemsEl = document.createElement(`<h4 class='answerChoices'>${ans}</h4>`);
         awrItemsEl.className = 'answerItems';
-        awrItemsEl.innerHTML = `<h4 class='answerChoices'>${ans}</h4>`;
-        mainParentAttachmentEl.appendChild(awrItemsEl);
+        // awrItemsEl.textContent = questions[qIndex].answers;
+        quizQuestionEl.appendChild(awrItemsEl);
     })
+
+
+
+    // // where the questions are held
+    // var awrContainerEl = document.createElement("ul");
+    // // the answers
+    // questions[qIndex].answers.forEach(ans => {
+    //     var awrItemsEl = document.createElement("div");
+    //     awrItemsEl.className = 'answerItems';
+    //     awrItemsEl.innerHTML = `<h4 class='answerChoices'>${ans}</h4>`;
+    //     mainParentAttachmentEl.appendChild(awrItemsEl);
+    // })
 }
 
 
