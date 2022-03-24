@@ -1,137 +1,121 @@
-
-
 html {
-    background-color: #5b6c7e;
+  background-color: #5b6c7e;
+}
+
+/* wanted to use this but ran out of time, will come back to this and figure it out when I have time during or after this course */
+:root {
+  --background-color: #5b6c7e;
+  --shadow-color: #888;
 }
 
 /* where everything takes place */
 #container {
-    width:50%;
-    margin:auto;
-    padding: 0 25px 40px 10px;
-    background-color: #5b6c7e;
-    border:4px solid #B0E0E6;
-    border-radius:5px;
-    color: #FFFFFF;
-    font-weight: bold;
-    box-shadow: 8px 7px 20px 15px #888;
-    font-family: Open Sans;
-    margin-top: 18rem;
+  width: 50%;
+  margin: auto;
+  padding: 0 25px 40px 10px;
+  background-color: #5b6c7e;
+  border: 4px solid #b0e0e6;
+  border-radius: 5px;
+  color: #ffffff;
+  font-weight: bold;
+  box-shadow: 8px 7px 20px 15px #888;
+  font-family: Open Sans;
+  margin-top: 18rem;
 }
 
 /* the whole webpage */
 body {
-    font-family: Open Sans;
-    margin-top: 18rem;
-    /* I found rem in this lesson through research */
+  font-family: Open Sans;
+  margin-top: 18rem;
+  /* I found rem in this lesson through research */
 }
 
 /* the title of the quiz */
-h1, #initial-instruction {
-    display: flex;
-    justify-content: center;
+h1,
+#initial-instruction {
+  display: flex;
+  justify-content: center;
 }
 
 #initial-instruction {
-    color: rgb(156, 156, 156);
+  color: rgb(156, 156, 156);
 }
 
 #initial-instruction:hover {
-cursor: pointer;
+  cursor: pointer;
 }
 
 .contBtnRules {
-    border-radius: 3rem;
-    background: #5b6c7e;
-    border: #5b6c7e;
+  border-radius: 3rem;
+  background: #5b6c7e;
+  border: #5b6c7e;
 }
 
-/* .contBtnRules,h5:hover {
-    background-color: #B0E0E6;
-    color: black;
-} */
-
 h5 {
-    font-size: larger;
-    color:#b8b8b8;
-    padding: 0.45rem;
+  font-size: larger;
+  color: #b8b8b8;
+  padding: 0.45rem;
 }
 
 h5:hover {
-    padding: 1rem;
-    border-radius: 3rem;
-    background: #5b6c7e;
-    border: #5b6c7e;
-    background-color: #B0E0E6;
-    color:white;
+  padding: 1rem;
+  border-radius: 3rem;
+  background: #5b6c7e;
+  border: #5b6c7e;
+  background-color: #b0e0e6;
+  color: white;
 }
 
 /* styling of title of quiz */
 #title {
-    display: flex;
-    flex-direction: column;
-    font-size: x-large;
-    font-style: italic;
+  display: flex;
+  flex-direction: column;
+  font-size: x-large;
+  font-style: italic;
 }
 
 .rules {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    font-size: larger;
-    margin: 2rem;
-    margin-top: 1rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  font-size: larger;
+  margin: 2rem;
+  margin-top: 1rem;
+}
+
+.time {
+  color: #b0e0e6;
 }
 
 /* where the question is */
 .questionItem {
-    display: flex;
-    justify-content: center;
+  display: flex;
+  justify-content: center;
 }
 
-.answerChoices {
-    font-size: large;
-    color: black;
-
-    margin: 1.5rem;
-
-    border-radius: 1.25rem;
-
-    border: #5b6c7e;
-    background-color: #B0E0E6;
+li {
+  font-size: large;
+  color: black;
+  padding: 1rem;
+  margin: 1.5rem;
+  border-radius: 1.25rem;
+  border: #5b6c7e;
+  background-color: #b0e0e6;
 }
 
-.answerChoices:hover {
-    transform: scale(1.13);
-    box-shadow: 8px 7px 16px 4px #888;
-    color: #7b7b7b;
+li:hover {
+  transform: scale(1.13);
+  box-shadow: 8px 7px 16px 4px #888;
+  color: #000000;
 }
 
-/* the text from the button to move to the next question */
-
-
-/* where the quiz takes place */
 #quiz {
-    text-indent: 10px;
+  text-indent: 10px;
 }
 
 /* the questions */
 ul {
-    list-style-type: none;
-    padding: 0;
-    margin: 0;
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
 }
-
-
-/* the button element */
-/* .navEl {
-    position: relative;
-    float:right;
-    background-color: #5b6c7e;
-} */
-
-/* the button that you click to move to the next question */
-/* .navBtn {
-    background: #5b6c7e;
-    color: #888;
-} */

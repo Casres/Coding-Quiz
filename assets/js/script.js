@@ -1,26 +1,55 @@
 
 
-var qIndex = 0
+
+
+var qIndex = 0;
 // <-- questions array -->
 var questions = [
-    {
-        question: "what is 1 + 1?" , 
-        answers: [ ["Lorem ipsum dolor, Assumenda voluptatem natus sunt,  "],["I eat tacos, and I love it.  "],["ad delectus tempora laudantium expedita dolorem quo, dicta quas accusantium harum ipsa ipsam"] ]  ,
-        correctAnswer: 2 ,
-        correctAnswerIndex: 1
-    } ,
-    {
-        question: "pick A, B or C?" , 
-        answers: [ "A","B","C" ]  ,
-        correctAnswer: "C",
-        correctAnswerIndex: 2 
-    } 
+  {
+    question: "what is an array?",
+    answers: [
+      "A type of variable that holds more than one object value",
+      "A type of variable that holds more than one value",
+      "An object that holds more than one variable",
+    ],
+    // correctAnswer: 1 ,
+    correctAnswerIndex: 1,
+  },
+  {
+    question: "(T/F) An if statement can have a for loop in it?",
+    answers: ["True", "False"],
+    // correctAnswer: "C",
+    correctAnswerIndex: 0,
+  },
+  {
+    question: "What is HTML?",
+    answers: [
+      "the base style design of a website",
+      "the logic of a website",
+      "the skeleton of a website",
+    ],
+    // correctAnswer: 3 ,
+    correctAnswerIndex: 2,
+  },
+  {
+    question: "what a function?",
+    answers: ["A boolean", "A condition", "A method"],
+    // correctAnswer: 5 ,
+    correctAnswerIndex: 1,
+  },
+  {
+    question: "Does the indentation of HTML matter??",
+    answers: [
+      "No, it doesn't; only the element inheritance structure does",
+      "No, the indentation matters, not the element inheritance",
+      "yes,it does, only the element inheritance structure does",
+    ],
+    // correctAnswer: 6 ,
+    correctAnswerIndex: 0,
+  },
 ];
 
-
-
 // ---------------------------------------------------------// ---------------------------------------------------------
-
 // <-- make variables that are js versions of html elements -->
 
 // this makes the h2 element (for the question)
@@ -41,151 +70,132 @@ var quizArea = document.querySelector("#quiz");
 var startBtnInitiate = document.querySelector("#initial-instruction");
 // ---------------------------------------------------------// ---------------------------------------------------------
 
-var initiate = startBtnInitiate.addEventListener("click", function() {
+var initiate = startBtnInitiate.addEventListener(
+  "click",
+  function initiateQuiz() {
     console.log("I hear the click, Houston");
     rulesOfTheQuiz();
-});
+  }
+);
 
 // the rules function
-var rulesOfTheQuiz = function() {
-    console.log("you have 5 min to complete this quiz you can retake after if you would like to.")
-    
-    // this removes the 'click anywhere to start' 
-    var initialTask = document.querySelector("#initial-instruction").remove("#initial-instruction");
-    
-    // shows the rules
-    var rules = document.createElement("div");
-    rules.className = 'rules';
-    rules.innerHTML = "<h3 class='rules'> The rules are that you cannot google any of these answers, this is a recall-from-your-memory excursive. You will have 3 minutes to answer 5 multiple choice questions. If the timer runs out, you can retake the quiz again if you would like to. </h3>";
-    mainParentAttachmentEl.appendChild(rules);
+var rulesOfTheQuiz = function () {
+  // this removes the 'click anywhere to start'
+  var initialTask = document
+    .querySelector("#initial-instruction")
+    .remove("#initial-instruction");
+  bootleg();
+};
 
-    var rulesBtn = document.createElement("button");
-    rulesBtn.className = 'contBtnRules';
-    rulesBtn.innerHTML = "<h5>click here if you have read the rules and are ready to go</h5>";
-    rules.appendChild(rulesBtn);
-    
-    var btnCont = rulesBtn.addEventListener("click", function() {
+// this is so that when the player clicks restart, they aren't starting from the very beginning, they are starting from the rules display part
+var bootleg = function () {
+  rulesDisplay();
+};
 
-        // alert("onto the game");
+var rulesDisplay = function () {
+  // shows the rules
+  var rules = document.createElement("div");
+  rules.className = "rules";
+  rules.innerHTML =
+    "<h3 class='rules'> The rules are that you cannot google any of these answers, this is a recall-from-your-memory excursive. You will have 3 minutes to answer 5 multiple choice questions. If the timer runs out, you can retake the quiz again if you would like to. </h3>";
+  mainParentAttachmentEl.appendChild(rules);
 
-        var counter = 1 
-        
-        
-        var countDownFunc = function (countDown){
-            console.log(counter);
-            counter--;
-            if (counter === -1) {
-                console.log("lets begin");
-                // alert("lets begin");
-                // clearInterval(countDown);
-                clearInterval(countDownFunc);
-                startQuiz();
-            };
-        };
-        
-        var countDownFunc = setInterval(countDownFunc, 1000);
+  var rulesBtn = document.createElement("button");
+  rulesBtn.className = "contBtnRules";
+  rulesBtn.innerHTML =
+    "<h5>click here if you have read the rules and are ready to go</h5>";
+  rules.appendChild(rulesBtn);
 
-    });
-    
+  var btnCont = rulesBtn.addEventListener("click", function () {
+    var counter = 1;
+    var countDownFunc = function (countDown) {
+      console.log(counter);
+      counter--;
+      if (counter === -1) {
+        console.log("lets begin");
+        clearInterval(countDownFunc);
+        startQuiz();
+      }
+    };
+    var countDownFunc = setInterval(countDownFunc, 1000);
+  });
 };
 
 // the startQuiz function
-var startQuiz = function() {
-    // removes the instructions
-    var instructionsRmv = document.querySelector(".rules").remove(".rules");
+var startQuiz = function () {
+  // removes the instructions
+  var instructionsRmv = document.querySelector(".rules").remove(".rules");
+  showNextQuestion();
+};
 
-    showNextQuestion();
-}
+// where the count down starts from 3 minutes
 
 function showNextQuestion() {
-    // the question
-    var existingQuestionAnswerContainerEl = mainParentAttachmentEl.querySelector('#question-answer');
-    if (existingQuestionAnswerContainerEl != null) {
-        existingQuestionAnswerContainerEl.remove();
-    }
+  // the question
+  var existingQuestionAnswerContainerEl = mainParentAttachmentEl.querySelector(
+    "#question-answer-container"
+  );
+  if (existingQuestionAnswerContainerEl != null) {
+    existingQuestionAnswerContainerEl.remove();
+  }
 
-    var questionAnswerContainerEl = document.createElement('div');
-    questionAnswerContainerEl.id = 'question-answer'
-    mainParentAttachmentEl.appendChild(questionAnswerContainerEl);
+  var questionAnswerContainerEl = document.createElement("div");
+  questionAnswerContainerEl.id = "question-answer-container";
+  mainParentAttachmentEl.appendChild(questionAnswerContainerEl);
 
-    var quizQuestionEl = document.createElement('h2');
-    quizQuestionEl.className = 'questionItem';
-    quizQuestionEl.textContent = questions[qIndex].question;
-    questionAnswerContainerEl.appendChild(quizQuestionEl);
+  var quizQuestionEl = document.createElement("h2");
+  quizQuestionEl.className = "questionItem";
+  quizQuestionEl.textContent = questions[qIndex].question;
+  questionAnswerContainerEl.appendChild(quizQuestionEl);
 
-    var awrContainerEl = document.createElement("ul");
-    awrContainerEl.id = 'answer-container'
-    questionAnswerContainerEl.append(awrContainerEl);
+  var awrContainerEl = document.createElement("ul");
+  awrContainerEl.id = "answer-container";
+  questionAnswerContainerEl.append(awrContainerEl);
 
-    for(var i = 0; i < questions[qIndex].answers.length; i++) {
-        console.log('running loop')
-        var possibleAnswerEl = document.createElement('li');
-        possibleAnswerEl.setAttribute('data-index', i);
-        possibleAnswerEl.textContent = questions[qIndex].answers[i];
-        possibleAnswerEl.addEventListener('click', handleClick);
-        awrContainerEl.appendChild(possibleAnswerEl);
-    }
-
-    // the answers
-    // questions[qIndex].answers.forEach(ans => {
-    //     var awrItemsEl = document.createElement(`<h4 class='answerChoices'>${ans}</h4>`);
-    //     awrItemsEl.className = 'answerItems';
-    //     // awrItemsEl.textContent = questions[qIndex].answers;
-    //     quizQuestionEl.appendChild(awrItemsEl);
-    // })
-
-
-
-    // // where the questions are held
-    // var awrContainerEl = document.createElement("ul");
-    // // the answers
-    // questions[qIndex].answers.forEach(ans => {
-    //     var awrItemsEl = document.createElement("div");
-    //     awrItemsEl.className = 'answerItems';
-    //     awrItemsEl.innerHTML = `<h4 class='answerChoices'>${ans}</h4>`;
-    //     mainParentAttachmentEl.appendChild(awrItemsEl);
-    // })
+  for (var i = 0; i < questions[qIndex].answers.length; i++) {
+    console.log("running loop");
+    var possibleAnswerEl = document.createElement("li");
+    possibleAnswerEl.setAttribute("data-index", i);
+    possibleAnswerEl.textContent = questions[qIndex].answers[i];
+    possibleAnswerEl.addEventListener("click", handleClick);
+    awrContainerEl.appendChild(possibleAnswerEl);
+  }
 }
-
-
 
 // var awrInput = document.addEventListener("click", ".answerItems", handleClick);
 
-var handleClick = function(event) {
-    console.log(event);
-    var target = event.target;
-    var index = target.dataset.index;
+var handleClick = function (event) {
+  console.log(event);
+  var target = event.target;
+  var index = target.dataset.index;
 
-    if (index == questions[qIndex].correctAnswerIndex) {
-        console.log('you got it right!')
-    } else {
-        console.log('false!')
-    }
+  if (index == questions[qIndex].correctAnswerIndex) {
+    console.log("you got it right!");
+    alert("Correct!");
+  } else {
+    console.log("false!");
+    alert("Incorrect");
+  }
 
-    if(qIndex<questions.length-1){
-        qIndex++;
-    
-        showNextQuestion();
-    } else {
-        console.log('Show scoreboard');
-    }
+  if (qIndex < questions.length - 1) {
+    qIndex++;
 
-
+    showNextQuestion();
+  } else {
+    console.log("Show scoreboard");
+    scoreBoard();
+  }
 };
 
-// <-- make the function of when user picks the right question, they move to the next question -->
+// when the quiz is done
+var scoreBoard = function () {
+  var rmQuiz = document
+    .querySelector("#question-answer-container")
+    .remove("#question-answer-container");
+  var scoreBoardEL = document.createElement("div");
+  scoreBoardEL.className = "scoreBoardClass";
+  scoreBoardEL.textContent = "great job! you finished the quiz. You scored:";
+  mainParentAttachmentEl.appendChild(scoreBoardEL);
+  restart();
+};
 
-
-// when the quiz is done, here it'll loop back to the initial function 'initiate'
-// initiate();
-
-
-
-
-
-
-
-// for(i=1; i<=questions[0].answers.length; i++) {
-//     create elements to display here 
-    
-//     }
